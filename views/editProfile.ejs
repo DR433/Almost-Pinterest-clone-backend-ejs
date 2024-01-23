@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<% include ./partials/header.ejs %>
+	<body>
+		<% include ./partials/nav.ejs %>
+		<div class="edit_page w-full h-full font-[Roboto]">
+			<!-- page Heading -->
+			<div class="heading h-24 w-full px-14 border-2 bg-white border-zinc-300 flex items-center justify-start sticky top-20 left-0 z-10">
+				<h1 class="text-xl lg:text-2xl font-semibold">Edit Your Profile</h1>
+			</div>
+			<div class="min-w-[90vw] min-h-full pt-26 flex flex-col justify-center items-center">
+				<form action="/uploadprofileimage" method="post" id="profile_img_form" enctype="multipart/form-data">
+					<input type="file" name="uploadprofileimage" id="uploadprofileimage" class="hidden" />
+					<input type="submit" value="submit" class="hidden" />
+				</form>
+				<section class="upload_post_section min-h-full w-full py-20">
+					<% if(user){%>
+					<div class="upload_form h-full w-full flex flex-col justify-center items-center pt-10">
+						<div class="profile_picture w-28 sm:w-32 lg:w-36 h-28 sm:h-32 lg:h-36 rounded-full overflow-hidden relative">
+							<span class="edit_profile_img absolute bottom-2 right-4 text-white bg-transparent">
+								<i id="edit_profile_img" class="fa-solid fa-pencil px-3 py-3 text-zinc-300 cursor-pointer"></i>
+							</span>
+							<img src="/images/uploads/<%= user.profileimg%>" alt="profile_image" class="object-cover h-full w-full" />
+						</div>
+						<form action="#" method="post" enctype="multipart/form-data" class="post_form flex flex-col justify-strech items-center gap-10 pt-10">
+							<div class="input__box flex flex-col itmes-start gap-3 text-sm font-semibold">
+								<label for="fullname">Fullname</label>
+								<input type="text" name="fullname" id="fullname" class="block w-full rounded-md border-0 py-2.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-md" value="<%= user.fullname%>" />
+							</div>
+							<div class="input__box flex flex-col itmes-start gap-3 text-sm font-semibold">
+								<label for="username">Username</label>
+								<input type="text" name="username" id="username" class="block w-full rounded-md border-0 py-2.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-md" value="<%= user.username%>" />
+							</div>
+							<div class="input__box flex flex-col itmes-start gap-3 text-sm font-semibold">
+								<label for="email">Email</label>
+								<input type="email" name="email" id="email" class="block w-full rounded-md border-0 py-2.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-md" value="<%= user.email %>" />
+							</div>
+							<input type="submit" value="Update Your Profile Info" class="submit_btn text-lg font-bold text-center self-start bg-red-500 py-3 px-3 rounded-[15px] mt-8 text-white cursor-pointer transition hover:bg-red-600 text-sm" />
+						</form>
+					</div>
+					<% }%>
+				</section>
+			</div>
+		</div>
+		<!-- Necessary scripts -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js" integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js" integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="/javascripts/nav.js"></script>
+		<script src="/javascripts/editProfile.js"></script>
+	</body>
+</html>

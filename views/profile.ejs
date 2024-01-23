@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<% include ./partials/header.ejs %>
+	<body>
+		<% include ./partials/nav.ejs %>
+		<div class="profile min-w-full min-h-full bg-zinc-100 font-[Roboto]">
+			<form action="/uploadprofileimage" method="post" id="profile_img_form" enctype="multipart/form-data">
+				<input type="file" name="uploadprofileimage" id="uploadprofileimage" class="hidden" />
+				<input type="submit" value="submit" class="hidden" />
+			</form>
+			<div class="w-[95vw] min-h-full mx-auto flex flex-col items-center gap-3 pt-20">
+				<div class="profile_info w-full min-h-[40vh] sm:min-h-[56vh] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 py-8 sm:py-10 md:py-12 lg:py-16">
+					<div class="profile_picture w-28 sm:w-32 lg:w-36 h-28 sm:h-32 lg:h-36 rounded-full overflow-hidden relative">
+						<span class="edit_profile_img absolute bottom-2 right-4 text-white bg-transparent">
+							<i class="fa-solid fa-pencil px-3 py-3 text-zinc-300 cursor-pointer"></i>
+						</span>
+						<img src="/images/uploads/<%= user.profileimg%>" alt="profile_image" class="object-cover h-full w-full" />
+					</div>
+					<div class="user_info flex flex-col items-center gap-0 sm:gap-1 md:gap-2">
+						<h1 class="full_name text-2xl md:text-3xl font-bold"><%= user.fullname %></h1>
+						<h3 class="username text-sm font-semibold">@<%= user.username%></h3>
+					</div>
+					<div class="profile_buttons flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 items-center justify-center">
+						<a href="/logout" target="_self" rel="noopener noreferrer" class="text-white font-bold text-sm sm:text-md">
+							<button class="bg-red-500 py-3 px-10 rounded-full cursor-pointer transition hover:bg-red-600">Logout</button>
+						</a>
+						<a href="/editprofile" target="_self" rel="noopener noreferrer" class="text-white font-bold text-sm sm:text-md">
+							<button class="bg-red-500 py-3 px-10 rounded-full cursor-pointer transition hover:bg-red-600">Edit Profile</button>
+						</a>
+					</div>
+				</div>
+				<div class="posts w-full flex flex-col items-center justify-center gap-1">
+					<h3 class="text-xl font-bold">Posts</h3>
+					<div class="create_post_section w-full flex justify-between items-center">
+						<span class="transition hover:bg-zinc-300 rounded-full mr-4 inline-block px-5 py-4 cursor-pointer">
+							<i class="fa-solid fa-arrow-down-wide-short text-2xl"></i>
+						</span>
+						<a href="/createpost" target="_self" rel="noopener noreferrer">
+							<span class="transition hover:bg-zinc-300 rounded-full mr-4 inline-block px-5 py-4 cursor-pointer">
+								<i class="fa-solid fa-plus text-2xl"></i>
+							</span>
+						</a>
+					</div>
+					<div class="cards w-full py-16 px-1 gap-2 columns-2 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6 2xl:columns-7 gap-3">
+						<% posts.forEach((post)=>{ %>
+						<div class="card w-22 min-h-10 flex flex-col items-start justify-start break-inside-avoid gap-2 rounded-[10px] md:rounded-[15px] lg:rounded-[20px]">
+							<div class="cardimg w-22 min-h-10 rounded-[10px] md:rounded-[15px] lg:rounded-[20px] overflow-hidden relative">
+								<img src="/images/uploads/<%= post.postimg %>" alt="posted picture" class="object-cover h-full w-full" />
+								<div class="w-full h-full absolute top-0 left-0 opacity-0 transition hover:opacity-100 cursor-zoom-in">
+									<div class="w-full h-full opacity-40 bg-zinc-800"></div>
+									<span class="editimg text-sm text-black absolute bottom-0 right-0 bg-zinc-300 rounded-full mx-2 my-2"><i class="fa-solid fa-pencil px-3 py-3 cursor-pointer"></i></span>
+								</div>
+							</div>
+							<h4 class="caption text-md font-bold pl-2 text-pretty min-h-16"><%= post.postcaption %></h4>
+						</div>
+						<% }) %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Necessary scripts -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js" integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js" integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="/javascripts/profile.js"></script>
+		<script src="/javascripts/nav.js"></script>
+	</body>
+</html>

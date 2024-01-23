@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<% include ./partials/header.ejs %>
+	<body>
+		<% include ./partials/nav.ejs %>
+		<div class="create_post min-h-full w-full font-[Roboto] bg-white">
+			<!-- full page container -->
+			<div class="page_container w-full min-h-full">
+				<!-- page Heading -->
+				<div class="heading h-24 w-full px-14 border-2 bg-white border-zinc-300 flex items-center sticky z-10 top-20 left-0">
+					<h1 class="text-2xl font-semibold">Create Post</h1>
+				</div>
+
+				<!-- page content container -->
+				<div class="container_content min-h-full w-[90vw] m-auto pt-40">
+					<!-- page content container -->
+					<div class="content w-full h-screen flex flex-row flex-wrap justify-center items-start gap-14">
+						<!-- image section on the left -->
+						<section class="upload_post_image w-1/4 relative">
+							<div class="image_upload h-3/4 w-full overflow-hidden rounded-[30px]">
+								<img src="https://plus.unsplash.com/premium_photo-1684341008678-22ada982c6ac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHNvY2lhbCUyMG1lZGlhfGVufDB8MXwwfHx8MA%3D%3D" alt="uploaded_image" class="object-cover h-full w-full" />
+							</div>
+						</section>
+
+						<!-- form section on the right -->
+						<section class="upload_post_form min-h-min w-1/3">
+							<div class="transparent_div"></div>
+							<div class="upload_form h-full w-full flex flex-col justify-center items-strech">
+								<form action="/uploadpostimage" method="post" enctype="multipart/form-data" class="post_form flex flex-col gap-10">
+									<div class="input__box flex flex-col itmes-start gap-3 text-sm font-semibold">
+										<label for="postcaption">Caption</label>
+										<input type="text" name="postcaption" id="postcaption" class="block w-full rounded-md border-0 py-2.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-md" />
+									</div>
+									<div class="input__box flex flex-col itmes-start gap-3 text-sm font-semibold">
+										<label for="tags">Tags</label>
+										<input type="text" name="tags" id="tags" class="block w-full rounded-md border-0 py-2.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-md" />
+									</div>
+									<div class="input__box flex flex-col itmes-start gap-3 text-sm font-semibold">
+										<label for="postdescription">Description</label>
+										<textarea cols="10" rows="4" type="text" name="postdescription" id="postdescription" class="block w-full rounded-md border-0 py-2.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-md"></textarea>
+									</div>
+									<div class="input__box flex flex-col itmes-start gap-3 text-sm font-semibold">
+										<label for="upload_image">Choose Your Post:</label>
+										<input type="file" name="postimg" id="postimg" class="py-3 px-6" />
+									</div>
+									<input type="submit" value="Submit" class="submit_btn text-lg font-bold text-center items-center bg-red-500 py-3 rounded-[15px] mt-8 text-white cursor-pointer transition hover:bg-red-600" />
+								</form>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Necessary scripts -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js" integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js" integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="/javascripts/createPosts.js"></script>
+		<script src="/javascripts/nav.js"></script>
+	</body>
+</html>

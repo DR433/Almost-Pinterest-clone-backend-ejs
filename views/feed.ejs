@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<% include ./partials/header.ejs %>
+	<body>
+		<% include ./partials/nav.ejs %>
+		<div class="feed_page w-full h-full font-[Roboto]">
+			<div class="w-full pt-24 px-4">
+				<div class="cards w-full columns-2 sm:columns-3 md:columns-4 lg:columns-5 xl:columns-6 2xl:columns-7 gap-3">
+					<% if(allPosts) {%> <% allPosts.forEach(post => { %>
+					<div class="card py-2 min-w-42 min-h-full break-inside-avoid">
+						<div class="min-w-32 md:min-w-36 lg:min-w-46 xl:min-w-48 min-h-10 flex flex-col gap-2 rounded-[10px] md:rounded-[15px] lg:rounded-[20px]">
+							<div class="cardimg min-w-32 md:min-w-36 lg:min-w-46 xl:min-w-48 min-h-10 rounded-[10px] md:rounded-[15px] lg:rounded-[20px] overflow-hidden relative">
+								<img src="/images/uploads/<%= post.postimg %>" alt="posted picture" class="object-cover h-full w-full" />
+								<div class="w-full h-full absolute top-0 left-0 opacity-0 transition hover:opacity-100 cursor-zoom-in">
+									<div class="w-full h-full opacity-40 bg-zinc-800"></div>
+									<span class="editimg text-sm text-black absolute bottom-0 right-0 bg-zinc-300 rounded-full mx-2 my-2"><i class="fa-solid fa-pencil px-3 py-3 cursor-pointer"></i></span>
+								</div>
+							</div>
+							<h4 class="caption text-sm sm:text-md font-bold pl-2 text-pretty min-h-6"><%= post.postcaption%></h4>
+						</div>
+					</div>
+					<% }) %> <% }%>
+				</div>
+			</div>
+		</div>
+
+		<!---Necessary scripts-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js" integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js" integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="/javascripts/feed.js"></script>
+		<script src="/javascripts/nav.js"></script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<nav class="navbar w-full h-20 flex flex-col justify-between items-center shadow-zinc-300 shadow-md bg-zinc-100 px-10 fixed z-30">
+	<div class="main_nav w-full h-full flex flex-row justify-between items-center z-30 bg-zinc-100">
+		<div class="nav_heading text-3xl h-full font-semibold flex flex-row gap-4 justify-around items-center">
+			<img src="https://i.pinimg.com/280x280_RS/f6/e9/3a/f6e93a06b500b2d87ffd32e1f56f7c6f.jpg" alt="pinterest logo" class="h-1/2 object-cover" />
+			<p class="hidden md:block">Pinterest</p>
+		</div>
+		<div class="nav_options text-lg font-semibold flex flex-row justify-around items-center gap-8">
+			<div class="options hidden md:flex md:flex-row justify-around items-center gap-8">
+				<a href="/profile" target="_self" rel="noopener noreferrer" class="cursor-pointer">Profile</a>
+				<a href="/createpost" target="_self" rel="noopener noreferrer" class="cursor-pointer w-full">Create</a>
+				<a href="/feed" target="_self" rel="noopener noreferrer" class="cursor-pointer">Feed</a>
+				<a href="/logout" target="_self" rel="noopener noreferrer" class="cursor-pointer">
+					<button class="bg-red-500 px-8 py-3 text-white rounded-lg">Logout</button>
+				</a>
+			</div>
+			<i id="menu" class="fa-solid fa-bars sm:hidden"></i>
+			<i id="close" class="fa-solid fa-xmark hidden sm:hidden"></i>
+		</div>
+	</div>
+	<div id="options" class="py-5 w-screen min-h-screen bg-zinc-100 flex flex-col justify-start items-center gap-8 sm:hidden sm:transform-none z-20 text-lg font-semibold text-center -translate-y-full">
+		<a href="/profile" target="_self" rel="noopener noreferrer" class="cursor-pointer w-full">Profile</a>
+		<a href="/createpost" target="_self" rel="noopener noreferrer" class="cursor-pointer w-full">Create</a>
+		<a href="/feed" target="_self" rel="noopener noreferrer" class="cursor-pointer w-full">Feed</a>
+		<a href="/logout" target="_self" rel="noopener noreferrer" class="cursor-pointer w-full">
+			<button class="bg-red-500 px-8 py-3 text-white rounded-lg">Logout</button>
+		</a>
+	</div>
+</nav>
